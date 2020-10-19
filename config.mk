@@ -4,7 +4,8 @@ VERSION = 6.2
 # Customize below to fit your system
 
 # paths
-PREFIX = /usr/local
+# PREFIX = /usr/local
+PREFIX = /usr
 MANPREFIX = ${PREFIX}/share/man
 
 X11INC = ${PREFIX}/include/

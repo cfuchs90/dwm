@@ -58,7 +58,16 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "urxvt", NULL };
+
+static const char *volup[]   = { "pamixer", "-i", "5", NULL };
+static const char *voldn[]   = { "pamixer", "-d", "5", NULL };
+static const char *volmute[] = { "pamixer", "-m", NULL };
+static const char *volunmute[] = { "pamixer", "-u", NULL };
+static const char *suspend[] = {"systemctl", "suspend", NULL};
+static const char *startstopmusic[] = { "mpc", "toggle", NULL };
+static const char *nextsong[] = { "mpc", "next", NULL };
+static const char *prevsong[] = { "mpc", "prev", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -98,6 +107,14 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
+	{ MODKEY,                       XK_F11, spawn,          {.v = volup } },
+	{ MODKEY,                       XK_F10, spawn,          {.v = voldn } },
+	{ MODKEY,                       XK_F9, spawn,          {.v = volmute } },
+	{ MODKEY|ShiftMask,             XK_F9, spawn,          {.v = volunmute } },
+	{ MODKEY,                       XK_F12, spawn,          {.v = suspend } },
+	{ MODKEY,                       XK_F7, spawn,          {.v = startstopmusic } },
+	{ MODKEY,                       XK_F8, spawn,          {.v = nextsong } },
+	{ MODKEY,                       XK_F6, spawn,          {.v = prevsong } },
 };
 
 /* button definitions */
